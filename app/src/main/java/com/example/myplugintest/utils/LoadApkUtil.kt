@@ -2,6 +2,8 @@ package com.example.myplugintest.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.AssetManager
+import android.content.res.Resources
 import android.os.Environment
 import dalvik.system.DexClassLoader
 import java.io.File
@@ -34,6 +36,7 @@ object LoadApkUtil {
             // 获取插件中的Elements
             val pluginClassLoader = DexClassLoader(
                 "sdcard/my-plugin-debug.apk",
+//                "sdcard/plugin-debug.apk",
                 context.cacheDir.absolutePath,
                 null,
                 context.classLoader
@@ -63,5 +66,24 @@ object LoadApkUtil {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    fun loadAsset(context: Context): Resources? {
+        try {
+            val assetManager = AssetManager::class.java.newInstance()
+            val addAssetPathMethod = assetManager::class.java.getDeclaredMethod("addAssetPath", String::class.java)
+            addAssetPathMethod.isAccessible = true
+            addAssetPathMethod.invoke(assetManager, "sdcard/my-plugin-debug.apk")
+
+            return Resources(
+                assetManager,
+                context.resources.displayMetrics,
+                context.resources.configuration
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return null
     }
 }

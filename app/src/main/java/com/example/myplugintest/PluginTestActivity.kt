@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -13,7 +12,7 @@ import androidx.core.content.ContextCompat
 import com.example.myplugintest.utils.HookUtil
 import com.example.myplugintest.utils.LoadApkUtil
 
-class TestActivity : AppCompatActivity() {
+class PluginTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
@@ -50,10 +49,11 @@ class TestActivity : AppCompatActivity() {
 
             // 跳转插件 Activity
             val intent = Intent()
-            intent.setComponent(ComponentName(
-                "com.example.myplugintest",
-                "com.example.myplugintest.PluginTestActivity"
-            ))
+            intent.component = ComponentName(
+                "com.example.plugin",
+                "com.example.plugin.test.PluginTestActivity"
+            )
+
             startActivity(intent)
         } catch (e: Exception) {
             e.printStackTrace()

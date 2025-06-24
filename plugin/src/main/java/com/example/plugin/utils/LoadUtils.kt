@@ -27,11 +27,15 @@ object LoadUtils {
             assetManagerMethod.invoke(assetManager, "sdcard/my-plugin-debug.apk")
 
             // 创建Resource
-            return Resources(
+            val resources = Resources(
                 assetManager,
                 context.resources.displayMetrics,
                 context.resources.configuration
             )
+            println("yp====  assetManager = " + assetManager)
+            println("yp====  resources = " + resources)
+
+            return resources
         } catch (e: Exception) {
             e.printStackTrace()
         }

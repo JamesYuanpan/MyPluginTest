@@ -14,11 +14,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyPluginTest">
+        android:theme="@style/android:Theme.Material.Light.NoActionBar">
         <activity android:name=".ProxyActivity"
-            android:theme="@style/Theme.MyPluginTest2"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".SecondActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".PluginTestActivity"
+            android:name=".PluginMainTestActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyPluginTest2" >

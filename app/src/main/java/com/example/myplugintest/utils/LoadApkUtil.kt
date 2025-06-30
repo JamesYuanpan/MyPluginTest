@@ -33,10 +33,12 @@ object LoadApkUtil {
             val hostPathList = pathListField.get(hostClassLoader)
             val hostElements = dexElementField.get(hostPathList) as kotlin.Array<Any>
 
+//            val skinPath = "${context.getCacheDir()}/skin-debug.apk"
+//            val skinPath = "${context.getCacheDir()}/skin-debug-activity.apk"
+            val skinPath = "sdcard/my-plugin-debug.apk"
             // 获取插件中的Elements
             val pluginClassLoader = DexClassLoader(
-                "sdcard/my-plugin-debug.apk",
-//                "sdcard/plugin-debug.apk",
+                skinPath,
                 context.cacheDir.absolutePath,
                 null,
                 context.classLoader
@@ -70,10 +72,15 @@ object LoadApkUtil {
 
     fun loadAsset(context: Context): Resources? {
         try {
+//            val skinPath = "${context.getCacheDir()}/skin-debug.apk"
+//            val skinPath = "${context.getCacheDir()}/skin-debug-activity.apk"
+//            val skinPath = "sdcard/skin-debug.apk"
+            val skinPath = "sdcard/my-plugin-debug.apk"
+            println("yp====  skinPath = " + skinPath)
             val assetManager = AssetManager::class.java.newInstance()
             val addAssetPathMethod = assetManager::class.java.getDeclaredMethod("addAssetPath", String::class.java)
             addAssetPathMethod.isAccessible = true
-            addAssetPathMethod.invoke(assetManager, "sdcard/my-plugin-debug.apk")
+            addAssetPathMethod.invoke(assetManager, skinPath)
 
             return Resources(
                 assetManager,
@@ -81,6 +88,8 @@ object LoadApkUtil {
                 context.resources.configuration
             )
         } catch (e: Exception) {
+
+            println("yp====  e = " + e.message)
             e.printStackTrace()
         }
 

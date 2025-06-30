@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SkinAttributes">
+        <attr name="skinBackgroundColorLight" format="color|reference" />
+        <attr name="skinBackgroundColorDark" format="color|reference" />
+        <attr name="skinBackgroundColorCustom" format="string" />
+        <attr name="skinTextColorLight" format="color|reference" />
+        <attr name="skinTextColorDark" format="color|reference" />
+        <attr name="skinTextColorCustom" format="string" />
+    </declare-styleable>
+</resources>

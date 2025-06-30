@@ -11,8 +11,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.myplugintest.utils.HookUtil
 import com.example.myplugintest.utils.LoadApkUtil
+import com.example.test.TestActivity
 
-class PluginTestActivity : AppCompatActivity() {
+//import com.example.skin.SkinMainActivity
+
+class PluginMainTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
@@ -34,6 +37,14 @@ class PluginTestActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.plugin_test_btn).setOnClickListener {
             loadApk()
+        }
+
+
+        findViewById<Button>(R.id.jump_second_btn).setOnClickListener {
+            val intent = Intent(this@PluginMainTestActivity,
+//                SkinMainActivity::class.java)
+                TestActivity::class.java)
+            startActivity(intent)
         }
     }
 

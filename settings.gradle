@@ -2,3 +2,5 @@
 rootProject.name = "MyPluginTest"
 include ':app'
 include ':plugin'
+include ':skin'
+include ':test'

@@ -17,6 +17,7 @@ class PluginTestApp : Application() {
 
     override fun getResources(): Resources {
         if (mResources == null) {
+            println("yp====  mResources is null ")
             return super.getResources()
         }
         return mResources!!

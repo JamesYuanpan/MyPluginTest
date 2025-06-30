@@ -1,5 +1,6 @@
 package com.example.plugin.common
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
@@ -7,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import com.example.plugin.utils.LoadUtils
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : Activity() {
     protected lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {

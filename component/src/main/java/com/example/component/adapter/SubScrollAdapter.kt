@@ -1,4 +1,4 @@
-package com.example.myplugintest.adapter
+package com.example.component.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.myplugintest.R
+import com.example.component.R
 
 class SubScrollAdapter(
     val list: List<String>
@@ -17,6 +17,7 @@ class SubScrollAdapter(
             parent,
             false
         )
+        println("yp====  child recyclerview create....")
         return TextViewHolder(view)
     }
 

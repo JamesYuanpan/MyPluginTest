@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.example.myplugintest.adapter.NestScrollAdapter
 import com.example.myplugintest.bean.ScrollBean
 import com.example.myplugintest.bean.ScrollType
@@ -24,6 +25,18 @@ class NestScrollActivity : AppCompatActivity() {
             post {
                 scrollToPosition(0)
             }
+
+            addOnScrollListener(object : OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                }
+
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    println("yp==== 移动了 dy = " + dy )
+                }
+            })
         }
     }
 
@@ -137,11 +150,11 @@ class NestScrollActivity : AppCompatActivity() {
         list.add(bean3)
         list.add(bean4)
         list.add(bean5)
-        list.add(bean6)
-        list.add(bean7)
-        list.add(bean8)
-        list.add(bean9)
-        list.add(bean10)
+//        list.add(bean6)
+//        list.add(bean7)
+//        list.add(bean8)
+//        list.add(bean9)
+//        list.add(bean10)
         list.add(bean11)
 
         return list

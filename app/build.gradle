@@ -49,5 +49,5 @@ dependencies {
 
 //    implementation project(":skin")
     implementation project(":test")
-//    implementation project(":component")
+    implementation project(":component")
 }

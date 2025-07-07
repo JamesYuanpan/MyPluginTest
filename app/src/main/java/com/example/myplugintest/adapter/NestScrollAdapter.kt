@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.component.nestscroll.NestedAndScrollView
 import com.example.myplugintest.R
 import com.example.myplugintest.bean.ScrollBean
 import com.example.myplugintest.bean.ScrollType
@@ -19,8 +20,8 @@ class NestScrollAdapter(
         val layoutInflater = LayoutInflater.from(parent.context)
         return when(viewType) {
             ScrollType.RECYCLER.ordinal -> {
-                RecyclerViewHolder(layoutInflater.inflate(
-                    R.layout.scroll_item_recycler,
+                NestedViewHolder(layoutInflater.inflate(
+                    R.layout.scroll_item_nested,
                     parent,
                     false
                 ))
@@ -42,14 +43,9 @@ class NestScrollAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         when(holder) {
-            is RecyclerViewHolder -> {
-                val childAdapter = SubScrollAdapter(list[position].subScrollBean ?: emptyList())
-                val recyclerViewHolder = holder as RecyclerViewHolder
-                recyclerViewHolder.recycler.apply {
-                    adapter = childAdapter
-                    layoutManager = LinearLayoutManager(context)
-                }
-
+            is NestedViewHolder -> {
+                val nestedViewHolder = holder as NestedViewHolder
+                nestedViewHolder.nestedView.setData(list[position].subScrollBean ?: emptyList())
             }
 
             else -> {
@@ -74,11 +70,11 @@ class NestScrollAdapter(
     }
 
 
-    class RecyclerViewHolder(itemView: View): ViewHolder(itemView) {
-        lateinit var recycler: RecyclerView
+    class NestedViewHolder(itemView: View): ViewHolder(itemView) {
+        lateinit var nestedView: NestedAndScrollView
 
         init {
-            recycler = itemView.findViewById(R.id.recycler_view)
+            nestedView = itemView.findViewById(R.id.nest_view)
         }
     }
 }

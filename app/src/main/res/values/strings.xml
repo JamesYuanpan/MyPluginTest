@@ -4,4 +4,6 @@
     <string name="load_plugin">加载插件</string>
     <string name="plugin_test">插件化测试</string>
     <string name="jump_second">跳转第二个页面</string>
+    <string name="component_page">组件页面</string>
+    <string name="nest_scroll">嵌套滑动</string>
 </resources>

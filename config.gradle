@@ -1,0 +1,6 @@
+ext {
+    minSdk = 21
+
+
+    recyclerView = '1.4.0'
+}

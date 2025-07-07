@@ -4,12 +4,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply from: '../config.gradle'
+
 android {
     compileSdkVersion 30
     buildToolsVersion = '30.0.2'
     defaultConfig {
         applicationId "com.example.myplugintest"
-        minSdkVersion 15
+        minSdkVersion minSdk
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -43,6 +45,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
 //    implementation project(":skin")
     implementation project(":test")
+//    implementation project(":component")
 }

@@ -46,6 +46,19 @@ class PluginMainTestActivity : AppCompatActivity() {
                 TestActivity::class.java)
             startActivity(intent)
         }
+
+        findViewById<Button>(R.id.component_page).setOnClickListener {
+            val intent = Intent(this@PluginMainTestActivity,
+//                ComponentActivity::class.java)
+                SecondActivity::class.java)
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.nest_scroll).setOnClickListener {
+            val intent = Intent(this@PluginMainTestActivity,
+                NestScrollActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     /**

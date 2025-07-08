@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.component.R
 import com.example.component.adapter.SubScrollAdapter
+import com.example.component.nested_scrolling_layout.NestedScrollingParent2LayoutImpl3
 
 class NestedChildFragment : Fragment() {
     companion object {
@@ -27,6 +28,8 @@ class NestedChildFragment : Fragment() {
     var rootView: View? = null
 
     var mList: List<String>? = emptyList()
+
+    var mNestedScrollingParent2Layout: NestedScrollingParent2LayoutImpl3? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +56,7 @@ class NestedChildFragment : Fragment() {
         recycler?.apply {
             adapter = childAdapter
             layoutManager = LinearLayoutManager(context)
+            mNestedScrollingParent2Layout?.setChildRecyclerView(this)
         }
     }
 }

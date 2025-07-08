@@ -1,10 +1,12 @@
 package com.example.myplugintest
 
 import android.os.Bundle
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
+import com.example.component.nestscroll.ParentRecyclerView
 import com.example.myplugintest.adapter.NestScrollAdapter
 import com.example.myplugintest.bean.ScrollBean
 import com.example.myplugintest.bean.ScrollType
@@ -15,8 +17,10 @@ class NestScrollActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nest_scroll)
 
-        val parentAdapter = NestScrollAdapter(generateData())
-        val recycler = findViewById<RecyclerView>(R.id.parent_recycler)
+        val parentAdapter = NestScrollAdapter(generateData()).apply {
+//            mNestedScrollingParent2Layout = findViewById(R.id.nest_root_container)
+        }
+        val recycler = findViewById<ParentRecyclerView>(R.id.parent_recycler)
 
         recycler.apply {
             adapter = parentAdapter
@@ -150,11 +154,11 @@ class NestScrollActivity : AppCompatActivity() {
         list.add(bean3)
         list.add(bean4)
         list.add(bean5)
-//        list.add(bean6)
-//        list.add(bean7)
-//        list.add(bean8)
-//        list.add(bean9)
-//        list.add(bean10)
+        list.add(bean6)
+        list.add(bean7)
+        list.add(bean8)
+        list.add(bean9)
+        list.add(bean10)
         list.add(bean11)
 
         return list

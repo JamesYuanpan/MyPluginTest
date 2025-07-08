@@ -3,11 +3,11 @@ package com.example.myplugintest.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.component.nested_scrolling_layout.NestedScrollingParent2LayoutImpl3
 import com.example.component.nestscroll.NestedAndScrollView
 import com.example.myplugintest.R
 import com.example.myplugintest.bean.ScrollBean
@@ -16,6 +16,9 @@ import com.example.myplugintest.bean.ScrollType
 class NestScrollAdapter(
     val list: List<ScrollBean>
 ) : Adapter<ViewHolder>() {
+
+     var mNestedScrollingParent2Layout: NestedScrollingParent2LayoutImpl3? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return when(viewType) {
@@ -45,7 +48,16 @@ class NestScrollAdapter(
         when(holder) {
             is NestedViewHolder -> {
                 val nestedViewHolder = holder as NestedViewHolder
-                nestedViewHolder.nestedView.setData(list[position].subScrollBean ?: emptyList())
+                nestedViewHolder.nestedView.setData(
+                    list[position].subScrollBean ?: emptyList(),
+                    mNestedScrollingParent2Layout
+                )
+                if (mNestedScrollingParent2Layout != null) {
+                    mNestedScrollingParent2Layout?.getViewTreeObserver()?.addOnGlobalLayoutListener(
+                        OnGlobalLayoutListener { //设置最后一个item：tab+viewPager
+                            mNestedScrollingParent2Layout?.setLastItem(nestedViewHolder.itemView)
+                        })
+                }
             }
 
             else -> {

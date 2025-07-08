@@ -17,7 +17,6 @@ class SubScrollAdapter(
             parent,
             false
         )
-        println("yp====  child recyclerview create....")
         return TextViewHolder(view)
     }
 

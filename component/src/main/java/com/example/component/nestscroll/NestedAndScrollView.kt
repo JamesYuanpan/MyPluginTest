@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.component.R
 import com.example.component.adapter.NestedViewPagerAdapter
+import com.example.component.nested_scrolling_layout.NestedScrollingParent2LayoutImpl3
 import com.google.android.material.tabs.TabLayout
 
 class NestedAndScrollView @JvmOverloads constructor(
@@ -21,12 +22,14 @@ class NestedAndScrollView @JvmOverloads constructor(
         true
     )
 
-    fun setData(list: List<String>) {
+    fun setData(list: List<String>, scrollingParent2Layout: NestedScrollingParent2LayoutImpl3? = null) {
         println("yp====  nestedAndScrollView setData ... ")
         val viewpager = layout.findViewById<ViewPager>(R.id.viewpager)
         val tabLayout = layout.findViewById<TabLayout>(R.id.tab_layout)
 
-        viewpager.adapter = NestedViewPagerAdapter(list, (context as FragmentActivity).supportFragmentManager)
+        viewpager.adapter = NestedViewPagerAdapter(list, (context as FragmentActivity).supportFragmentManager).apply {
+            nestedScrollingParent2Layout = scrollingParent2Layout
+        }
 
         viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
